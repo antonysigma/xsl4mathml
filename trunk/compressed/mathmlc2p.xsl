@@ -55,7 +55,13 @@
    <xsl:param name="Sum">&#8721;</xsl:param>   
    <xsl:param name="times">&#215;</xsl:param>   
    <xsl:param name="Union">&#8899;</xsl:param>   
-   <xsl:param name="UpArrow">&#8593;</xsl:param>          
+   <xsl:param name="UpArrow">&#8593;</xsl:param>    
+   <xsl:template match="/">     
+      <xsl:apply-templates/>   
+   </xsl:template>   
+   <xsl:template match="text()|@*">     
+      <xsl:value-of disable-output-escaping="no" select="."/>   
+   </xsl:template>      
    <xsl:template match="m:cn">     
       <xsl:choose>       
          <xsl:when test="@base and @base!=10">          
