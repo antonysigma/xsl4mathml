@@ -109,13 +109,12 @@ Improvements made in 2007 have been contributed by Josh Bode.
   <xsl:param name="Union">&#8899;</xsl:param>
   <xsl:param name="UpArrow">&#8593;</xsl:param>
 <!-- #################### main #################### -->
-  <!-- *antonysigma* delete duplicate tags
-  xsl:template match="/">
+  <xsl:template match="/">
     <xsl:apply-templates/>
   </xsl:template>
   <xsl:template match="text()|@*">
     <xsl:value-of disable-output-escaping="no" select="."/>
-  </xsl:template -->
+  </xsl:template>
 <!-- #################### 4.4.1 #################### -->
 <!-- number-->
 <!-- support for bases and types-->
