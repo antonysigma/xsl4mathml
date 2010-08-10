@@ -1,0 +1,142 @@
+/* Inline CSS style block handles all font and size specification for the various MathML operators. */
+span {
+display:inline-block;
+margin:0;
+padding:0;
+}
+
+.msubsup {
+font-size:80%;
+vertical-align:middle;
+text-align:left;
+}
+
+.msub {
+font-size:80%;
+position:relative;
+}
+
+.munderover {
+vertical-align:middle;
+text-align:center;
+}
+
+.munder {
+text-align:center;
+vertical-align:text-top;
+}
+
+.mover {
+text-align:center;
+vertical-align:text-bottom;
+}
+
+.lr {
+vertical-align:middle;
+line-height:1em;
+font-family:Symbol;
+text-align:left;
+}
+
+.mi {
+font-family:serif,sans-serif,"Microsoft Sans Serif";
+}
+
+.mspace {
+display:inline-block;
+}
+
+.mtext {
+font-family:serif;
+}
+
+.ms {
+font-family:monospace;
+}
+
+.mi1 {
+font-style:italic;
+}
+
+.doublestruck {
+font-family:castellar, algerian,'niagara engraved';
+}
+
+.mo {
+font-family:serif;
+padding-right:.1em;
+padding-left:.1em;
+}
+
+.msqrt {
+padding-left:.2em;
+margin-top:2px;
+display:inline-block;
+border-color:#000;
+border-style:solid;
+border-width:1px 0 0 1px;
+}
+
+.msqrtx {
+text-align:right;
+vertical-align:bottom;
+}
+
+.mroot_index {
+text-align:right;
+vertical-align:top;
+font-size:80%;
+}
+
+.mroot_whole {
+vertical-align:middle;
+}
+
+.actuarial {
+padding-right:.2em;
+display:inline-block;
+border-color:#000;
+border-style:solid;
+border-width:.1em .1em 0 0;
+}
+
+.ssa {
+position:relative;
+top:.5ex;
+width:0;
+color:red;
+}
+
+/* *antonysigma* : hacks for IE and Firefox to implement inline table */
+.mtable {
+font-size:100%;
+display:-moz-inline-stack;
+display:inline-block;
+zoom:1;
+*display:inline;
+vertical-align:middle;
+}
+
+.mfrac {
+text-align:center;
+vertical-align:middle;
+}
+
+.mfraca {
+vertical-align:bottom;
+}
+
+.mfracb {
+vertical-align:top;
+}
+
+.merror {
+background-color:#FFF;
+color:red;
+border-color:red;
+border-style:solid;
+}
+
+.mphantom {
+visibility:hidden;
+}

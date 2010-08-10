@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+   <htmlTemplate xmlns:xd="http://www.pnp-software.com/XSLTdoc"
+                 href="../htmlTemplates/standard.tpl.html"/>
+   <page xmlns:xd="http://www.pnp-software.com/XSLTdoc" id="mainPage" menu="yes"
+         label="Main Page"
+         targetFilename="index.html"
+         uriAbs="file:/home/antony/Documents/workshop/mathml/modified/math_xslt/xsl/doc/index.html"
+         uriRel="index.html"/>
+   <page xmlns:xd="http://www.pnp-software.com/XSLTdoc" id="stylesheetList" menu="yes"
+         label="Stylesheet List"
+         uriAbs="file:/home/antony/Documents/workshop/mathml/modified/math_xslt/xsl/doc/stylesheetList.html"
+         uriRel="stylesheetList.html"/>
+   <page xmlns:xd="http://www.pnp-software.com/XSLTdoc" id="functionTemplateList"
+         menu="yes"
+         label="Function/Template List"
+         uriAbs="file:/home/antony/Documents/workshop/mathml/modified/math_xslt/xsl/doc/functionTemplateList.html"
+         uriRel="functionTemplateList.html"/>
+   <targetDirUriAbs href="file:/home/antony/Documents/workshop/mathml/modified/math_xslt/xsl/doc/"/>
+   <sourceRootUriAbs href="file:/home/antony/Documents/workshop/mathml/modified/math_xslt/xsl/"/>
+   <pagelist id="stylesheets">
+      <page uriAbs="file:/home/antony/Documents/workshop/mathml/modified/math_xslt/xsl/doc/mathml.xsl.xd.html"
+            uriRel="mathml.xsl.xd.html"
+            verbatimUriAbs="file:/home/antony/Documents/workshop/mathml/modified/math_xslt/xsl/doc/mathml.xsl.src.html"
+            verbatimUriRel="mathml.xsl.src.html"
+            srcUriAbs="file:/home/antony/Documents/workshop/mathml/modified/math_xslt/xsl/mathml.xsl"
+            srcUriRel="mathml.xsl"
+            srcDirAbs="file:/home/antony/Documents/workshop/mathml/modified/math_xslt/xsl/"
+            srcFilename="mathml.xsl"
+            label="mathml.xsl"/>
+      <page uriAbs="file:/home/antony/Documents/workshop/mathml/modified/math_xslt/xsl/doc/mathmlc2p.xsl.xd.html"
+            uriRel="mathmlc2p.xsl.xd.html"
+            verbatimUriAbs="file:/home/antony/Documents/workshop/mathml/modified/math_xslt/xsl/doc/mathmlc2p.xsl.src.html"
+            verbatimUriRel="mathmlc2p.xsl.src.html"
+            srcUriAbs="file:/home/antony/Documents/workshop/mathml/modified/math_xslt/xsl/mathmlc2p.xsl"
+            srcUriRel="mathmlc2p.xsl"
+            srcDirAbs="file:/home/antony/Documents/workshop/mathml/modified/math_xslt/xsl/"
+            srcFilename="mathmlc2p.xsl"
+            label="mathmlc2p.xsl"/>
+      <page uriAbs="file:/home/antony/Documents/workshop/mathml/modified/math_xslt/xsl/doc/pmathmlcss.xsl.xd.html"
+            uriRel="pmathmlcss.xsl.xd.html"
+            verbatimUriAbs="file:/home/antony/Documents/workshop/mathml/modified/math_xslt/xsl/doc/pmathmlcss.xsl.src.html"
+            verbatimUriRel="pmathmlcss.xsl.src.html"
+            srcUriAbs="file:/home/antony/Documents/workshop/mathml/modified/math_xslt/xsl/pmathmlcss.xsl"
+            srcUriRel="pmathmlcss.xsl"
+            srcDirAbs="file:/home/antony/Documents/workshop/mathml/modified/math_xslt/xsl/"
+            srcFilename="pmathmlcss.xsl"
+            label="pmathmlcss.xsl"/>
+   </pagelist>
+   <XSLTdocConfig>
+      <Title>XSLT stylesheets for MathML</Title>
+      <Introduction>
+         <h3>What is MathML?</h3>
+
+         <p>It is a headache putting math formula into the webpage. To tackle this,
+  people use MS Equation Editor, or Latex to generate the image, just like what
+  the Wikimedia guys are doing. But that is too difficult! What about directly
+  typing the formula among the paragraphs, and let the browser to render them
+  for us? Yes, we can - using MathML.</p>
+
+         <h3>Why use XSL stylesheets?</h3>
+
+         <p>Why? It is just because not all browsers support MathML. Currently, only
+  Firefox have native support in MathML (but presentation type only!). Other
+  popular browsers like Internet Explorer, <del>Opera,</del> or Google Chome, had not yet
+  implemented anything to help render math formula. That's why XSL stylesheets
+  are needed.</p>
+
+         <h3>How to use the XSL stylesheets?</h3>
+
+         <ol>
+            <li>
+               <p>
+                  <b>Create the page using XHTML with MathML</b>
+               </p>
+
+               <p>You should learn how the create XHTML webpages and insert the MathML
+      codes into the main document:</p>
+               <pre style="border:solid 1px #000">
+&lt;?xml version="1.0"?&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+  &lt;head&gt;
+    &lt;title&gt;Webpage&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Formula 1&lt;/h1&gt;
+    &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+      &lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;
+    &lt;/math&gt;
+    ...
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+               <p>Save it as <i>mypage.xml</i>.</p>
+
+               <p>(In fact, I made a 'clone' of the MathML Editor from <a target="_blank" href="http://mathcs.chapman.edu/~jipsen/mathml/asciimath.html">ASCIIMathML</a>
+      so that you can create them at ease.)</p>
+            </li>
+
+            <li>
+               <p>
+                  <b>Add a stylesheet processing instruction</b>
+               </p>
+
+               <p>Download these files and copy them into the same directory of the main
+      document: mathml.xsl, mathmlc2p.xsl and pmathmlcss.xsl.</p>
+
+               <p>Then add a <i>stylesheet processing instruction</i> to the begginning
+      of the XHTML file. Just like this:</p>
+               <pre style="border:solid 1px #000">
+&lt;?xml version="1.0"?&gt;
+<b>&lt;?xml-stylesheet type="text/xsl" href="mathml.xsl"?&gt;</b>
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+...
+</pre>
+
+               <p>And that's all! Now you can show math formula in web browsers.</p>
+            </li>
+         </ol>
+
+         <h3>How it is made?</h3>
+
+         <p>Well, I didn't make it from scratch by myself. I just copy scripts and
+  stylesheets that are currently available on the web and assemble them all
+  together:</p>
+
+         <dl>
+            <dt>
+               <a target="_blank" href="http://www.w3.org/Math/XSL/">XSL for MathML by
+    W3C</a>
+            </dt>
+
+            <dd>The very original idea of putting math formula on the web.</dd>
+
+            <dt>
+               <a target="_blank" href="http://jquery.com/">jQuery</a>
+            </dt>
+
+            <dd>A robust Javascript library that helps me write less, do more.</dd>
+
+            <dt>
+               <a target="_blank" href="http://www.lri.fr/~pietriga/mathmlc2p/mathmlc2p.html">MathMLc2p</a>
+            </dt>
+
+            <dd>Help Firefox to render <i>Content MathML</i>
+            </dd>
+         </dl>
+
+         <h3>Which browsers does it support?</h3>
+
+         <p>Currently the stylesheets supports MathML2.0, and is tested in Firefox,
+  Internet Explorer and Google Chrome, but it should support most other modern
+  browsers equipped with XSLT, JavaScript, and CSS. Here is the test
+  result:</p>
+
+         <table border="1" summary="comparison">
+            <tr>
+               <td rowspan="2">Web Browser</td>
+
+               <td colspan="2">native support</td>
+
+               <td colspan="2">XSL for MathML</td>
+            </tr>
+
+            <tr>
+               <td>Content</td>
+
+               <td>Presentation</td>
+
+               <td>Content</td>
+
+               <td>Presentation</td>
+            </tr>
+
+            <tr>
+               <td>Internet Explorer 6+</td>
+
+               <td>no</td>
+
+               <td>no</td>
+
+               <td>no</td>
+
+               <td>yes (interactive)</td>
+            </tr>
+
+            <tr>
+               <td>Firefox 3.0</td>
+
+               <td>no</td>
+
+               <td>yes (non-interactive)</td>
+
+               <td>yes</td>
+
+               <td>yes (non-interactive)</td>
+            </tr>
+
+            <tr>
+               <td>Google Chrome 1+</td>
+
+               <td>no</td>
+
+               <td>no</td>
+
+               <td>no</td>
+
+               <td>yes (interactive)</td>
+            </tr>
+            <tr>
+               <td>Opera 9.5+</td>
+
+               <td>no</td>
+
+               <td>yes (non-interactive)</td>
+
+               <td>no</td>
+
+               <td>yes (interactive)</td>
+            </tr>
+         </table>
+
+         <h3>I would like to see the demo!</h3>
+
+         <p>Here you are:</p>
+
+         <dl>
+            <dt>
+               <a target="mathml" href="../psmall.xml">psmall.xml</a>
+            </dt>
+
+            <dd>Small Presentation MathML example file.</dd>
+
+            <dt>
+               <a target="mathml" href="../csmall.xml">csmall.xml</a>
+            </dt>
+
+            <dd>Small Content MathML example file.</dd>
+         </dl>
+
+         <p>Last modified: <i>16 July 2009</i>
+         </p>
+      </Introduction>
+      <!-- 
+    The absolute or relative path to the target directory 
+    where the HTML files are created. If a relative path
+    is used it is always relative to the config file.
+   -->
+  <TargetDirectory path="./"/>
+      <!-- 
+    The absolute or relative path to the source directory.
+    This is where the XSLT source files can be found.
+    If a relative path is used it is always relative 
+    to the config file.
+   -->
+  <SourceDirectory path="../"/>
+
+      <!-- 
+    A list of source code files which shall be documented. 
+    Only stylesheets which are not included by another
+    have to be listed here. The included stylesheets
+    are found automatically by following the include or
+    the import statements in the including stylesheet.
+    Relative references are relative to the SourceDirectory
+    defined above.
+   -->
+  <RootStylesheets>
+         <File href="mathml.xsl"/>
+      </RootStylesheets>
+   </XSLTdocConfig>
+</config>
