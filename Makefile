@@ -1,8 +1,9 @@
-scripts = jquery-1.4.1.min.js.new pmathmlscript.js.new pmathmlstyle.css.new
-xslts = mathml.xsl.new mathmlc2p.xsl.new pmathmlcss.xsl.new
-
+JQUERY_VERSION = 1.4.2
 PATH_TO_SAXON9=/usr/share/java/openoffice/saxon9.jar
 PATH_TO_YUICOMPRESSOR = /usr/share/java/yuicompressor-2.4.2.jar
+
+scripts = jquery-$(JQUERY_VERSION).min.js.new pmathmlscript.js.new pmathmlstyle.css.new
+xslts = mathml.xsl.new mathmlc2p.xsl.new pmathmlcss.xsl.new
 
 help:
 	@echo "make {all|documentation|install}"
@@ -24,7 +25,7 @@ pmathmlcss.min.xsl:xx0.csp xx1.csp xx2.csp xx3.csp $(scripts)
 	cat pmathmlstyle.css.new >> $@
 	echo '/*]]>*/</style><script type="text/JavaScript">' >> $@
 	echo '//<![CDATA[' >> $@
-	cat jquery-1.4.1.min.js.new pmathmlscript.js.new >> $@
+	cat jquery-$(JQUERY_VERSION).min.js.new pmathmlscript.js.new >> $@
 	echo '//]]>' >> $@
 	cat xx3.new >> $@
 
