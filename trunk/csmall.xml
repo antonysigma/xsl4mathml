@@ -1,0 +1,71 @@
+<?xml-stylesheet type="text/xsl" href="compressed/mathml.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+>
+<head>
+<title>Content MathML Examples</title>
+</head>
+<body>
+
+
+<div style="border-style:solid; border-width:2px; margin: 1em 1em 1em 1em; padding: 1em 1em 1em 1em;">
+<pre><![CDATA[<math xmlns="http://www.w3.org/1998/Math/MathML">
+<matrix>
+  <matrixrow>
+    <cn> 0 </cn> <cn> 1 </cn> <cn> 0 </cn>
+  </matrixrow>
+  <matrixrow>
+    <cn> 0 </cn> <cn> 0 </cn> <cn> 1 </cn>
+  </matrixrow>
+  <matrixrow>
+    <cn> 1 </cn> <cn> 0 </cn> <cn> 0 </cn>
+  </matrixrow>
+</matrix>
+</math>]]>
+</pre>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<matrix>
+  <matrixrow>
+    <cn> 0 </cn> <cn> 1 </cn> <cn> 0 </cn>
+  </matrixrow>
+  <matrixrow>
+    <cn> 0 </cn> <cn> 0 </cn> <cn> 1 </cn>
+  </matrixrow>
+  <matrixrow>
+    <cn> 1 </cn> <cn> 0 </cn> <cn> 0 </cn>
+  </matrixrow>
+</matrix>
+</math></div>
+
+
+<div style="border-style:solid; border-width:2px; margin: 1em 1em 1em 1em; padding: 1em 1em 1em 1em;">
+<pre><![CDATA[<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+  <in/>
+  <cn type="complex-cartesian">17<sep/>29</cn>
+  <complexes/>
+</apply>
+</math>]]>
+</pre>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+  <in/>
+  <cn type="complex-cartesian">17<sep/>29</cn>
+  <complexes/>
+</apply>
+</math></div>
+
+
+<div style="border-style:solid; border-width:2px; margin: 1em 1em 1em 1em; padding: 1em 1em 1em 1em;">
+<pre><![CDATA[<math xmlns="http://www.w3.org/1998/Math/MathML">
+<infinity/>
+</math>]]>
+</pre>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<infinity/>
+</math></div>
+
+
+
+
+</body>
+</html>
