@@ -4,34 +4,35 @@ xslts = mathml.xsl.new mathmlc2p.xsl.new pmathmlcss.xsl.new
 PATH_TO_SAXON9=/usr/share/java/openoffice/saxon9.jar
 PATH_TO_YUICOMPRESSOR = /usr/share/java/yuicompressor-2.4.2.jar
 
-all: compress xsltdoc
+help:
+	@echo "make {all|documentation|install}"
 
-compress:pmathmlcss.min.xsl mathml.xsl.new mathmlc2p.xsl.new
+all: xsltdoc pmathmlcss.min.xsl mathml.xsl.new mathmlc2p.xsl.new
 
 #Generate doc files
 documentation: config.xml
 	java -jar $(PATH_TO_SAXON9) $< xsltdoc/xsl/xsltdoc.xsl > /dev/null
 
 #========================= COMPRESS STAGE 2 =========================
-pmathmlcss.min.xsl:xx00 xx01 xx02 xx03 $(scripts)
+pmathmlcss.min.xsl:xx0.csp xx1.csp xx2.csp xx3.csp $(scripts)
 	#remove useless tags
-	sed -e '1,2 d' xx03 > xx03.new
+	sed -e '1,2 d' xx3.csp > xx3.new
 
 	#combine xsl fragments with style and js
-	mv xx00 $@
+	mv xx0.csp $@
 	echo '<style type="text/css">/*<![CDATA[*/' >> $@
 	cat pmathmlstyle.css.new >> $@
 	echo '/*]]>*/</style><script type="text/JavaScript">' >> $@
 	echo '//<![CDATA[' >> $@
 	cat jquery-1.4.1.min.js.new pmathmlscript.js.new >> $@
 	echo '//]]>' >> $@
-	cat xx03.new >> $@
+	cat xx3.new >> $@
 
-xx00 xx01 xx02 xx03:pmathmlcss.xsl.new
+xx0.csp xx1.csp xx2.csp xx3.csp:pmathmlcss.xsl.new
 	#add delimiter and split file
 	sed -e 's/pmathmlstyle\.css/@@@@/g' -e 's/\.js/@@@@/g' \
 	pmathmlcss.xsl.new > pmathmlcss.xsl.new3
-	csplit -k pmathmlcss.xsl.new3 '/@@@@/' '{*}'
+	csplit -b '%01d.csp' -k pmathmlcss.xsl.new3 '/@@@@/' '{*}'
 
 #========================= COMPRESS STAGE 1 =========================
 
@@ -44,7 +45,7 @@ $(xslts):%.new:%.new2
 	sed -r -e 's/@@([^@]+)@@/\&#\1;/g' $< > $@
 
 $(patsubst %.new,%.new2,$(xslts)):%.new2:%.new1
-	java -jar $(PATH_TO_SAXON9) $< removeDoc.xsl > $@
+	java -jar $(PATH_TO_SAXON9) $< removeDocTag.xsl > $@
 
 $(patsubst %.new,%.new1,$(xslts)):%.new1:%
 	tr -t '\n' ' ' < $< |\
