@@ -58,6 +58,9 @@ install:
 	mv mathml.xsl.new compressed/mathml.xsl
 	mv pmathmlcss.min.xsl compressed/pmathmlcss.xsl
 	mv mathmlc2p.xsl.new compressed/mathmlc2p.xsl
+	cp compressed/mathml.xsl w3c_testsuite/style
+	mv compressed/pmathmlcss.xsl w3c_testsuite/style
+	mv compressed/mathmlc2p.xsl w3c_testsuite/style
 
 clean:
 	rm -f *.new* xx*
