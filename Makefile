@@ -1,13 +1,16 @@
 scripts = jquery-1.4.1.min.js.new pmathmlscript.js.new pmathmlstyle.css.new
 xslts = mathml.xsl.new mathmlc2p.xsl.new pmathmlcss.xsl.new
 
+PATH_TO_SAXON9=/usr/share/java/openoffice/saxon9.jar
+PATH_TO_YUICOMPRESSOR = /usr/share/java/yuicompressor-2.4.2.jar
+
 all: compress xsltdoc
 
 compress:pmathmlcss.min.xsl mathml.xsl.new mathmlc2p.xsl.new
 
 #Generate doc files
-xsltdoc: config.xml
-	java -jar /usr/share/java/saxon9.jar $< ../xsltdoc/xsl/xsltdoc.xsl > /dev/null
+documentation: config.xml
+	java -jar $(PATH_TO_SAXON9) $< xsltdoc/xsl/xsltdoc.xsl > /dev/null
 
 #========================= COMPRESS STAGE 2 =========================
 pmathmlcss.min.xsl:xx00 xx01 xx02 xx03 $(scripts)
@@ -34,14 +37,14 @@ xx00 xx01 xx02 xx03:pmathmlcss.xsl.new
 
 #compact and obfuscate scripts
 $(scripts):%.new:%
-	java -jar /opt/YUI/yuicompressor-2.4.2.jar $< -o $@
+	java -jar $(PATH_TO_YUICOMPRESSOR) $< -o $@
 
 #remove xsltdoc and comments from stylesheets, preserve &x****;
 $(xslts):%.new:%.new2
 	sed -r -e 's/@@([^@]+)@@/\&#\1;/g' $< > $@
 
 $(patsubst %.new,%.new2,$(xslts)):%.new2:%.new1
-	java -jar /usr/share/java/saxon9.jar $< removeDoc.xsl > $@
+	java -jar $(PATH_TO_SAXON9) $< removeDoc.xsl > $@
 
 $(patsubst %.new,%.new1,$(xslts)):%.new1:%
 	tr -t '\n' ' ' < $< |\
